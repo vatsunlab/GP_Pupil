@@ -11,11 +11,11 @@ The parts of the code that extract pupil and motion traces from the data files a
 
 2. Combine data across sessions and subjects and run growth curve analysis. To do so, vertically concatenate all the datamat outputs from pupil_avg_JOVE for all sessions, animals,SNRs and attenuations to form the final matrix with [animalID, SNR, dbAtt, Pupil(1-50)timebinvalues]. Use this matrix as input to run the pupil_LME_JOVE code. An example file is provided for the analysis performed in Fig. 3D.
 
->> load('pupil_dia_pct_cell_array.mat') % example file for Fig. 3
->> pupil_threshold_estimate_JOVE(pupil_dia_pct_cell_array)
+>> load('LME_datamat.mat')
+>> pupil_LME_JOVE(LME_datamat)
 
 
 3. To evaluate reliability of responses, generate another matrix. Put all the session-wise percentage of trials with significant pupil changes into each cell of a cell array where the cells are arranged from lower to higher SNR. Use this cell array as input to run pupil_threshold_estimate_JOVE code. An example file is provided for the analysis performed in Figs. 3B and C.
 
->> load('LME_datamat.mat')
->> pupil_LME_JOVE(LME_datamat)
+>> load('pupil_dia_pct_cell_array.mat') % example file for Fig. 3
+>> pupil_threshold_estimate_JOVE(pupil_dia_pct_cell_array)
